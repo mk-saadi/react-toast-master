@@ -1,0 +1,256 @@
+.outer_container {
+	position: fixed;
+	display: flex;
+	width: 100%;
+	pointer-events: none;
+}
+
+.inner_container {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	pointer-events: all;
+}
+
+/* 
+	     		reveal animation css 
+*/
+.outer_container.ani_down {
+	animation: slide_down 0.5s ease forwards;
+}
+.outer_container.ani_top {
+	animation: slide_up 0.5s ease forwards;
+}
+.outer_container.ani_left {
+	animation: slide_left 0.5s ease forwards;
+}
+.outer_container.ani_right {
+	animation: slide_right 0.5s ease forwards;
+}
+.outer_container.ani_fade {
+	animation: fade_in 0.5s ease forwards;
+}
+.outer_container.ani_zoom {
+	animation: zoom_in 0.8s ease forwards;
+}
+.outer_container.ani_jelly {
+	animation: jelly 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.475) forwards;
+}
+
+/* 
+	     		reveal animation 
+*/
+@keyframes slide_down {
+	from {
+		transform: translateY(-150%);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
+
+@keyframes slide_up {
+	from {
+		transform: translateY(150%);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
+
+@keyframes slide_left {
+	from {
+		transform: translateX(-100%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+
+@keyframes slide_right {
+	from {
+		transform: translateX(100%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+
+@keyframes fade_in {
+	from {
+		scale: 0.975;
+		opacity: 0.2;
+	}
+	to {
+		opacity: 1;
+		scale: 1;
+	}
+}
+
+@keyframes zoom_in {
+	from {
+		scale: 0.9;
+		opacity: 0;
+	}
+	to {
+		scale: 1;
+		scale: 1;
+	}
+}
+@keyframes jelly {
+	from {
+		transform: rotateX(90deg);
+		scale: 0.93;
+	}
+	to {
+		transform: rotateX(0deg);
+		scale: 1;
+	}
+}
+
+/* 
+	     		closing animation css
+*/
+.outer_container.ani_fade_out {
+	animation: fade_out 0.5s ease forwards;
+}
+.outer_container.ani_zoom_out {
+	animation: zoom_out 0.5s ease-out forwards;
+}
+.outer_container.ani_slide_out_down {
+	animation: slide_out_down 0.5s ease forwards;
+}
+.outer_container.ani_slide_out_up {
+	animation: slide_out_up 0.5s ease forwards;
+}
+.outer_container.ani_slide_out_left {
+	animation: slide_out_left 0.5s ease forwards;
+}
+.outer_container.ani_slide_out_right {
+	animation: slide_out_right 0.5s ease forwards;
+}
+.outer_container.ani_jelly_out {
+	animation: jelly_out 0.5s ease forwards;
+}
+
+/* 
+	     		closing animation 
+*/
+
+@keyframes slide_out_down {
+	from {
+		transform: translateY(0);
+	}
+	to {
+		transform: translateY(-200%);
+	}
+}
+
+@keyframes slide_out_up {
+	from {
+		transform: translateY(0);
+	}
+	to {
+		transform: translateY(200%);
+	}
+}
+
+@keyframes slide_out_left {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-100%);
+	}
+}
+
+@keyframes slide_out_right {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(100%);
+	}
+}
+
+@keyframes fade_out {
+	from {
+		opacity: 1;
+		scale: 1;
+	}
+	to {
+		opacity: 0;
+		scale: 0.95;
+	}
+}
+
+@keyframes zoom_out {
+	from {
+		scale: 1;
+		opacity: 1;
+	}
+	to {
+		scale: 0.9;
+		opacity: 0;
+	}
+}
+
+@keyframes jelly_out {
+	from {
+		transform: rotateX(0deg);
+		scale: 1;
+		opacity: 1;
+	}
+	to {
+		transform: rotateX(40deg);
+		scale: 0.95;
+		opacity: 0;
+	}
+}
+
+/* 
+	this css style is used when the toast is using full width "bottomFull" ||"topFull" 
+*/
+.outer_container.ani_fade_out_full {
+	animation: fade_out_full 0.5s ease forwards;
+}
+
+@keyframes fade_out_full {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+.reveal_ani {
+	animation: revealFooter 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes revealFooter {
+	from {
+		opacity: 0;
+		transform: translateY(-150%);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: glass;
+	transition: background-color 0.35s ease-in-out;
+	z-index: 9997;
+	backdrop-filter: blur(0.7px);
+}
+
+.overlay.show {
+	background-color: rgba(12, 12, 12, 0.63);
+}

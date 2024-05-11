@@ -1,0 +1,116 @@
+/* 
+	     		toast position for small screens 
+*/
+.top {
+	justify-content: center;
+	left: 0;
+	top: 1rem;
+}
+.topLeft {
+	left: 0rem;
+	top: 1rem;
+	justify-content: center;
+}
+.topRight {
+	right: 0rem;
+	justify-content: center;
+	top: 1rem;
+}
+
+.middle {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.bottom {
+	justify-content: center;
+	left: 0;
+	bottom: 1rem;
+}
+.bottomLeft {
+	left: 0rem;
+	justify-content: center;
+	bottom: 1rem;
+}
+.bottomRight {
+	justify-content: center;
+	right: 0rem;
+	bottom: 1rem;
+}
+
+.topFull {
+	justify-content: center;
+	align-items: center;
+	top: 0;
+	width: 100%;
+}
+.bottomFull {
+	justify-content: center;
+	align-items: center;
+	bottom: 0;
+	width: 100%;
+}
+
+/* 
+	     		toast position from 640px and up 
+*/
+@media (min-width: 640px) {
+	.top {
+		justify-content: center;
+		left: auto;
+		right: 0;
+		top: 1.25rem;
+	}
+	.topLeft {
+		justify-content: flex-start;
+		left: 1.25rem;
+		top: 1.25rem;
+	}
+	.topRight {
+		justify-content: flex-end;
+		right: 1.25rem;
+		top: 1.25rem;
+	}
+
+	.bottom {
+		justify-content: center;
+		left: auto;
+		right: 0;
+		bottom: 1.25rem;
+	}
+	.bottomLeft {
+		justify-content: flex-start;
+		left: 1.25rem;
+		bottom: 1.25rem;
+	}
+	.bottomRight {
+		justify-content: flex-end;
+		right: 1.25rem;
+		bottom: 1.25rem;
+	}
+
+	.topFull {
+		justify-content: center;
+		align-items: center;
+		top: 0;
+		width: 100%;
+	}
+	.bottomFull {
+		justify-content: center;
+		align-items: center;
+		bottom: 0;
+		width: 100%;
+	}
+}
+
+/* 
+				this css style is used when the toast is using full width 
+				"bottomFull" ||"topFull" 
+*/
+.toast_width_full {
+	width: 100vw;
+	padding: 0.325rem 1.5rem;
+}

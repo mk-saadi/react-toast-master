@@ -1,0 +1,220 @@
+/* xl */
+@media screen and (min-width: 1280px) and (max-width: 5120px) {
+	.toast_width {
+		width: 475px;
+		padding: 0.725rem 2.3rem;
+	}
+	.toast_width_confirm {
+		width: 480px;
+		padding: 1.1rem 1.5rem;
+	}
+	.toast_message {
+		/* display: flex; */
+		align-items: center;
+		font-size: 1.04rem;
+		line-height: 1.3rem;
+		font-weight: 600;
+		white-space: normal;
+		column-gap: 1rem;
+		/* border: 1px solid red; */
+	}
+	/* footer */
+	._footer {
+		white-space: break-spaces;
+		display: flex;
+		border-top-width: 1px;
+		font-weight: 400;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		padding: 0.325rem 2.3rem;
+	}
+
+	.confirm_div {
+		font-size: 1rem;
+		line-height: 1.5rem;
+		display: flex;
+		align-items: center;
+		margin-top: 0.75rem;
+		color: #374151;
+		font-weight: 500;
+		column-gap: 0.75rem;
+	}
+
+	/* 
+	     		this css is being used in the InnerFooter component 
+	*/
+	.innerFooter {
+		white-space: break-spaces;
+		display: flex;
+		font-weight: 400;
+		font-size: 0.875rem;
+		padding: 0.625rem 0rem;
+		line-height: 1.25rem;
+	}
+}
+
+/* medium display */
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+	.toast_message {
+		/* display: flex; */
+		flex-direction: row;
+		column-gap: 0.8rem;
+		font-size: 1rem;
+		line-height: 1.3rem;
+		font-weight: 600;
+		align-items: center;
+	}
+	.toast_width {
+		width: 440px;
+		padding: 0.425rem 2rem;
+	}
+	.toast_width_confirm {
+		width: 450px;
+		padding: 1rem 1.5rem;
+	}
+	/* footer */
+	._footer {
+		white-space: break-spaces;
+		display: flex;
+		border-top-width: 1px;
+		font-weight: 400;
+		font-size: 0.8rem;
+		line-height: 1.25rem;
+		padding: 0.325rem 2rem;
+	}
+
+	.confirm_div {
+		font-size: 1rem;
+		line-height: 1.5rem;
+		display: flex;
+		align-items: center;
+		margin-top: 0.75rem;
+		color: #374151;
+		font-weight: 500;
+		column-gap: 0.75rem;
+	}
+
+	/* 
+	     		this css is being used in the InnerFooter component 
+	*/
+	.innerFooter {
+		white-space: break-spaces;
+		display: flex;
+		/* border-bottom-width: 1px; */
+		font-weight: 400;
+		font-size: 0.8rem;
+		line-height: 1.25rem;
+		padding: 0.6rem 0rem;
+	}
+}
+
+/* small display */
+@media screen and (min-width: 481px) and (max-width: 767px) {
+	.toast_message {
+		/* display: flex; */
+		flex-direction: row;
+		font-size: 17px;
+		line-height: 1.4rem;
+		font-weight: 500;
+		gap: 0rem 0.75rem;
+		align-items: center;
+	}
+	.toast_width {
+		width: 380px;
+		padding: 0.325rem 2.2rem;
+	}
+	.toast_width_confirm {
+		width: 410px;
+		padding: 1rem 1.5rem;
+	}
+	/* footer */
+	._footer {
+		white-space: break-spaces;
+		display: flex;
+		border-top-width: 1px;
+		font-weight: 400;
+		font-size: 13px;
+		line-height: 1.2rem;
+		padding: 0.35rem 2.2rem;
+	}
+	.confirm_div {
+		font-size: 1rem;
+		line-height: 1.5rem;
+		display: flex;
+		align-items: center;
+		margin-top: 0.75rem;
+		color: #374151;
+		font-weight: 500;
+		column-gap: 0.75rem;
+	}
+
+	/* 
+	     		this css is being used in the InnerFooter component 
+	*/
+	.innerFooter {
+		/* font-size: 0.77rem; */
+		font-size: 14px;
+		letter-spacing: -0.4px;
+		padding: 0.625rem 0rem;
+	}
+}
+
+@media screen and (min-width: 120px) and (max-width: 480px) {
+	.toast_width {
+		width: 95vw;
+		padding: 0.325rem 1.1rem;
+	}
+	.toast_width_confirm {
+		width: 95vw;
+		padding: 0.925rem 0.875rem;
+	}
+	/* footer */
+	._footer {
+		white-space: break-spaces;
+		display: flex;
+		border-top-width: 1px;
+		font-weight: 400;
+		font-size: 13px;
+		line-height: 1.25rem;
+		padding: 0.425rem 0.875rem;
+		letter-spacing: -0.5px;
+	}
+	.toast_message {
+		/* display: flex; */
+		flex-direction: row;
+		align-items: center;
+		gap: 0rem 0.6rem;
+		font-size: 16px;
+		line-height: 1.25rem;
+		font-weight: 500;
+		letter-spacing: -0.4px;
+	}
+
+	/* confirm toast component styles */
+	.confirm_div {
+		display: flex;
+		flex-direction: column-reverse;
+		align-items: center;
+		margin-top: 0.75rem;
+		color: #374151;
+		font-weight: 500;
+		row-gap: 0.37rem;
+		font-size: 13.5px;
+		line-height: 1.25rem;
+		width: 100%;
+	}
+
+	/* 
+	     		this css is being used in the InnerFooter component 
+	*/
+	.innerFooter {
+		font-size: 13.5px;
+		letter-spacing: -0.6px;
+		padding: 0.725rem 0rem;
+	}
+}
+
+.toast_message {
+	display: flex;
+	position: relative;
+}

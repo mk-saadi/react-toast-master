@@ -1,0 +1,62 @@
+.text_warning {
+	color: #edc319;
+}
+.text_dark {
+	color: #1f2937;
+}
+.text_white {
+	color: white;
+}
+.text_darker {
+	color: #131318;
+}
+.textWhite {
+	color: #fff;
+}
+.text_error {
+	color: #dc2626;
+}
+.text_success {
+	/* color: #07bc0c; */
+	color: #07bc0c;
+}
+.text_info {
+	/* color: #2196f3; */
+	color: #007fff;
+}
+.textWarning {
+	color: #bda74e;
+}
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+.animate_spin {
+	animation: spin 1.2s linear infinite;
+}
+
+.rotate_deg {
+	transform: rotate(40deg);
+}
+
+.footer_dark {
+	color: #5e6a7a;
+	border-color: #4b556380;
+}
+.footer_white {
+	color: #6b7280;
+	border-color: #9ca3af99;
+}
+.footer_info {
+	color: #d1d5db;
+	border-color: #e5e7eb99;
+}
+.footer_error {
+	color: #d1d5db;
+	border-color: #9ca3af99;
+}
+.footer_success {
+	color: #ebebeb;
+	border-color: #ffffff99;
+}

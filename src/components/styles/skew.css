@@ -1,0 +1,28 @@
+/* 
+	     		skew css styles only applies to screens of 640px and up 
+*/
+@media (min-width: 640px) {
+	.right3 {
+		transform: skewX(-3deg) !important;
+	}
+
+	.right6 {
+		transform: skewX(-6deg) !important;
+	}
+
+	.right12 {
+		transform: skewX(-12deg) !important;
+	}
+
+	.left3 {
+		transform: skewX(3deg) !important;
+	}
+
+	.left6 {
+		transform: skewX(6deg) !important;
+	}
+
+	.left12 {
+		transform: skewX(12deg) !important;
+	}
+}

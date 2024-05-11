@@ -1,0 +1,159 @@
+/* Default styles for buttons */
+.cancel_button,
+.confirm_button {
+	white-space: nowrap;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	border-radius: 0.375rem;
+	transition-duration: 300ms;
+	font-weight: 600;
+}
+
+/* Large devices */
+@media screen and (min-width: 1280px) and (max-width: 5120px) {
+	.cancel_button {
+		background-color: transparent;
+		padding: 0.25rem 1rem;
+	}
+
+	.confirm_button {
+		padding: 0.25rem 1rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+
+	.closeDiv {
+		right: -2rem;
+	}
+}
+
+/* Medium devices */
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+	.cancel_button {
+		background-color: transparent;
+		padding: 0.25rem 1rem;
+	}
+
+	.confirm_button {
+		padding: 0.25rem 1rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+
+	.closeDiv {
+		right: -2rem;
+	}
+}
+
+/* Small devices */
+@media screen and (min-width: 481px) and (max-width: 767px) {
+	.cancel_button {
+		padding: 0.4rem 1.5rem;
+		font-size: 0.875rem;
+		background-color: transparent;
+		line-height: 1.25rem;
+	}
+
+	.confirm_button {
+		padding: 0.4rem 1.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	}
+	.closeDiv {
+		right: -2rem;
+	}
+}
+
+/* Extra small devices */
+@media screen and (min-width: 120px) and (max-width: 480px) {
+	.cancel_button {
+		padding: 0.35rem 0.5rem;
+		border-width: 1px;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+
+		width: 100%;
+		background-color: transparent;
+		color: white;
+	}
+
+	.confirm_button {
+		padding: 0.35rem 0.5rem;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+		width: 100%;
+	}
+	.closeDiv {
+		right: -1.1rem;
+	}
+}
+
+.confirm_button_white {
+	background-color: #141318;
+	color: #fff;
+	border: 1px solid #353244;
+}
+.confirm_button_dark {
+	background-color: #fff;
+	color: #1f2937;
+	border: 1px solid #d1d5db;
+}
+.cancel_button_dark {
+	color: #1f2937;
+	border: 1px solid #d1d5db;
+}
+.cancel_button_all {
+	color: #fff;
+	border: 1px solid #67656e;
+}
+
+/* cancel button glass */
+.cancel_button_glass {
+	color: #ffffff;
+	border: 1px solid #ffffff;
+}
+
+/* 
+	     		below css styles are being used in the InnerFooter 
+				component's toast close button 
+*/
+.closeDiv {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	transition-duration: 300ms;
+}
+
+.div_flex {
+	display: flex;
+}
+.div_hidden {
+	display: none;
+}
+
+.inner_container .closeButton {
+	opacity: 0;
+	padding: 0.25rem;
+	transition: opacity 150ms ease-in-out, scale 150ms ease-in-out;
+}
+.closeButton:hover {
+	scale: 1.05;
+}
+.inner_container:hover .closeButton {
+	opacity: 1;
+}
+
+/* 
+	     		for screen readers 
+*/
+.sr_only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
