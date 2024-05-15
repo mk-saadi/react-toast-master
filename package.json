@@ -8,15 +8,16 @@
 		"react",
 		"toast",
 		"notification",
-		"component"
+		"component",
+		"modal"
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/your-username/your-repo.git"
+		"url": "https://github.com/mk-saadi/react-toast-master"
 	},
 	"scripts": {
 		"dev": "vite",
-		"build": "vite build",
+		"build": "webpack",
 		"lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview"
 	},
