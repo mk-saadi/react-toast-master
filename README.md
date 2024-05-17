@@ -9,7 +9,7 @@ $ npm install react-toast-master
 $ yarn add react-toast-master
 ```
 
-## Example
+## 💡 Example
 
 ```jsx
 import React from "react";
@@ -36,10 +36,10 @@ function App() {
 }
 ```
 
-## Documentation and Demo
+## 📔 Documentation and Demo
 
 Check [documentation](https://react-toast-master.web.app) to get a better understanding!
 
-## License
+## 📜 License
 
 Licensed under MIT
