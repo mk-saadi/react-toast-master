@@ -1,6 +1,6 @@
 # React-Toast-Master
 
-🎉 React's most customizable toast component!
+## 🏆 React's most customizable toast component!
 
 ## Installation
 
