@@ -16,15 +16,20 @@ module.exports = {
 				loader: "babel-loader",
 			},
 			{
+				test: /\.js$/,
+				include: path.resolve(__dirname, "src/components/animation"),
+				loader: "babel-loader",
+			},
+			{
 				test: /\.css$/,
 				use: ["style-loader", "css-loader"],
 			},
 		],
 	},
 	resolve: {
-		extensions: [".js", ".jsx"],
+		extensions: [".jsx"],
 		alias: {
-			"@components": path.resolve("src/components/footer"),
+			"@components": path.resolve(__dirname, "src/components/footer"),
 		},
 	},
 	externals: {
