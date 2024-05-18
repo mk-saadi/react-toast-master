@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
 	mode: "production",
-	entry: "./src/Toast.jsx",
+	entry: "./src/ToastProvider.jsx",
 	output: {
 		path: path.resolve("build"),
 		filename: "index.js",
