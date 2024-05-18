@@ -19,18 +19,16 @@ import { ToastProvider, useToast } from "react-toast-master";
 function App() {
 	const { toastMaster } = useToast();
 
+	const showToast = () => {
+		toastMaster({
+			type: "success",
+			message: "Hello World!",
+		});
+	};
+
 	return (
 		<ToastProvider>
-			<button
-				onClick={() => {
-					toastMaster({
-						type: "success",
-						message: "Hello World!",
-					});
-				}}
-			>
-				Notify!
-			</button>
+			<button onClick={showToast}>Toast</button>
 		</ToastProvider>
 	);
 }
@@ -38,7 +36,7 @@ function App() {
 
 ## 📔 Documentation and Demo
 
-Check [documentation](https://react-toast-master.web.app) to get a better understanding!
+Check [website](https://react-toast-master.web.app) to get a better understanding!
 
 ## 📜 License
 

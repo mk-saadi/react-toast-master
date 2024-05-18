@@ -45,14 +45,14 @@ export const ToastProvider = ({ children }) => {
 	const confirmButtonRef = useRef(null);
 
 	const toastBackgroundClasses = {
-		white: "bg_white",
-		dark: "bg_dark",
-		gray: "bg_gray",
 		success: "bg_success",
 		error: "bg_error",
 		warning: "bg_warning",
 		info: "bg_info",
 		glass: "bg_glass",
+		white: "bg_white",
+		dark: "bg_dark",
+		gray: "bg_gray",
 		transparent: "bg_transparent",
 	};
 
@@ -88,9 +88,6 @@ export const ToastProvider = ({ children }) => {
 		right3: "right3",
 		right6: "right6",
 		right12: "right12",
-		left3: "left3",
-		left6: "left6",
-		left12: "left12",
 	};
 	const toastAwesomeShadow = {
 		none: "",
