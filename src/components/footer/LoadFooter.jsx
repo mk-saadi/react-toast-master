@@ -17,8 +17,6 @@ const toastBGClasses = {
 	gray: "footer_success",
 	glass: "footer_success",
 	transparent: "footer_success",
-	grWarning: "footer_success",
-	grError: "footer_success",
 };
 
 export default LoadFooter;

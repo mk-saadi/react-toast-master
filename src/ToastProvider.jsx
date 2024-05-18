@@ -21,7 +21,7 @@ const ToastContext = createContext();
 
 export const useToast = () => useContext(ToastContext);
 
-export const Toast = ({ children }) => {
+export const ToastProvider = ({ children }) => {
 	const [toastType, setToastType] = useState("");
 	const [toastMessage, setToastMessage] = useState("");
 	const [confirmResolve, setConfirmResolve] = useState(null);
@@ -600,8 +600,6 @@ export const Toast = ({ children }) => {
 															  toastBG === "warning" ||
 															  toastBG === "error" ||
 															  toastBG === "info" ||
-															  toastBG === "grWarning" ||
-															  toastBG === "grError" ||
 															  toastBG === "dark"
 															? "cancel_button_all"
 															: "cancel_button_glass"

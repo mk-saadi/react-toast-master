@@ -17,7 +17,7 @@ module.exports = {
 			},
 			{
 				test: /\.js$/,
-				include: path.resolve(__dirname, "src/components/animation"),
+				include: path.resolve(__dirname, "src/components/functions"),
 				loader: "babel-loader",
 			},
 			{
@@ -27,7 +27,7 @@ module.exports = {
 		],
 	},
 	resolve: {
-		extensions: [".jsx"],
+		extensions: [".js", ".jsx"],
 		alias: {
 			"@components": path.resolve(__dirname, "src/components/footer"),
 		},
