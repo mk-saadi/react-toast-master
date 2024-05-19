@@ -36,7 +36,7 @@ function App() {
 
 ## 📔 Documentation and Demo
 
-Check [website](https://react-toast-master.web.app) to get a better understanding!
+Check [website](https://react-toast-master.web.app)( under development ) to get a better understanding!
 
 ## 📜 License
 
