@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
 	mode: "production",
@@ -35,4 +36,9 @@ module.exports = {
 	externals: {
 		react: "react",
 	},
+	plugins: [
+		new webpack.ProvidePlugin({
+			React: "react",
+		}),
+	],
 };
