@@ -3,14 +3,14 @@
 */
 @media (min-width: 640px) {
 	.right3 {
-		transform: skewX(-3deg) !important;
+		transform: skewX(-3deg);
 	}
 
 	.right6 {
-		transform: skewX(-6deg) !important;
+		transform: skewX(-6deg);
 	}
 
 	.right12 {
-		transform: skewX(-12deg) !important;
+		transform: skewX(-12deg);
 	}
 }

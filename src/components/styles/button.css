@@ -1,12 +1,14 @@
 /* Default styles for buttons */
 .cancel_button,
 .confirm_button {
+	font-family: inherit;
 	white-space: nowrap;
 	font-size: 1rem;
 	line-height: 1.5rem;
 	border-radius: 0.375rem;
 	transition-duration: 300ms;
 	font-weight: 600;
+	cursor: pointer;
 }
 
 /* Large devices */
@@ -126,21 +128,25 @@
 
 .div_flex {
 	display: flex;
+	cursor: pointer;
 }
 .div_hidden {
 	display: none;
 }
 
 .inner_container .closeButton {
-	opacity: 0;
+	opacity: 0 !important;
 	padding: 0.25rem;
 	transition: opacity 150ms ease-in-out, scale 150ms ease-in-out;
+	background-color: initial;
+	border: none;
+	outline: none;
 }
 .closeButton:hover {
-	scale: 1.05;
+	scale: 1.05 !important;
 }
 .inner_container:hover .closeButton {
-	opacity: 1;
+	opacity: 1 !important;
 }
 
 /* 

@@ -9,11 +9,10 @@ $ npm install react-toast-master
 $ yarn add react-toast-master
 ```
 
-## 💡 Example
+## 💡 Simple Example
 
 ```jsx
 import React from "react";
-
 import { ToastProvider, useToast } from "react-toast-master";
 
 function App() {
@@ -23,6 +22,44 @@ function App() {
 		toastMaster({
 			type: "success",
 			message: "Hello World!",
+		});
+	};
+
+	return (
+		<ToastProvider>
+			<button onClick={showToast}>Toast</button>
+		</ToastProvider>
+	);
+}
+```
+
+## 💡 With More Customization ( with Tailwind CSS )
+
+```jsx
+import React from "react";
+import { ToastProvider, useToast } from "react-toast-master";
+
+function App() {
+	const { toastMaster } = useToast();
+
+	const showToast = () => {
+		toastMaster({
+			type: "errorWhite",
+			message: "Uh oh! Something went wrong.",
+			footer: (
+				<div className="flex justify-between">
+					<p>There was a problem with your request.</p>{" "}
+					<span className="border border-white cursor-pointer duration-100 hover:bg-white hover:text-[#dc2626] h-min px-2 rounded-sm text-white whitespace-nowrap">
+						Try again
+					</span>
+				</div>
+			),
+			align: "left",
+			position: "bottomRight",
+			bg: "error",
+			transition: "top",
+			shadow: "white",
+			cancelButton: true,
 		});
 	};
 

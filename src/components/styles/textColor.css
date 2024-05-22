@@ -37,24 +37,30 @@
 .rotate_deg {
 	transform: rotate(40deg);
 }
+.icon_only {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
 
 .footer_dark {
 	color: #5e6a7a;
-	border-color: #4b556380;
+	border-top-color: #4b556380;
 }
 .footer_white {
 	color: #6b7280;
-	border-color: #9ca3af99;
+	border-top-color: #9ca3af99;
 }
 .footer_info {
 	color: #d1d5db;
-	border-color: #e5e7eb99;
+	border-top-color: #e5e7eb99;
 }
 .footer_error {
 	color: #d1d5db;
-	border-color: #9ca3af99;
+	border-top-color: #9ca3af99;
 }
 .footer_success {
 	color: #ebebeb;
-	border-color: #ffffff99;
+	border-top-color: #ffffff99;
 }
