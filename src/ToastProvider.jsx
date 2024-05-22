@@ -1,5 +1,5 @@
 import { CheckCheck, CircleDashed, Info, PinIcon, X, XCircle } from "lucide-react";
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import React, { createContext, useContext, useEffect, useRef, useState } from "react";
 
 import "./components/styles/background.css";
 import "./components/styles/border.css";
@@ -500,7 +500,7 @@ export const ToastProvider = ({ children }) => {
 							style={{ zIndex: "9999" }}
 						>
 							<div
-								className={`inner_container ${toastClasses[toastType]} ${toastBackground} ${toastSkew} ${toastShadow} ${toastRadius}`}
+								className={`inner_container max_width ${toastClasses[toastType]} ${toastBackground} ${toastSkew} ${toastShadow} ${toastRadius}`}
 								onMouseEnter={handleMouseEnter}
 								onMouseLeave={handleMouseLeave}
 							>
