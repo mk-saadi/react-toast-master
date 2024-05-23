@@ -1,0 +1,10 @@
+{
+	"compilerOptions": {
+		"target": "ES6",
+		"checkJs": true,
+		"jsx": "react",
+		"allowSyntheticDefaultImports": true
+	},
+	"include": ["src/**/*.js", "src/**/*.jsx", "build/index.d.ts"],
+	"exclude": ["node_modules"]
+}
