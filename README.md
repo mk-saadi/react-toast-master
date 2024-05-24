@@ -1,4 +1,4 @@
-# React-Toast-Master ( under development )
+# React-Toast-Master
 
 ## 🏆 React's most customizable toast component!
 

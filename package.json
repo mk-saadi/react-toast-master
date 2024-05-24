@@ -1,8 +1,8 @@
 {
 	"name": "react-toast-master",
-	"version": "2.1.3",
+	"version": "2.1.4",
 	"description": "React's most customizable toast notification component.",
-	"main": "src/ToastProvider.jsx",
+	"main": "build/index.js",
 	"types": "build/index.d.ts",
 	"author": "mk-saadi",
 	"license": "MIT",

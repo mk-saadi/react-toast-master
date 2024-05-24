@@ -1,11 +1,11 @@
 /* xl */
 @media screen and (min-width: 1280px) and (max-width: 5120px) {
-	.toast_width {
-		padding: 0.725rem 2.3rem;
-	}
 	.max_width {
 		width: 475px;
 		overflow: hidden;
+	}
+	.toast_width {
+		padding: 0.725rem 2.3rem;
 	}
 	.toast_width_confirm {
 		padding: 1.1rem 1.5rem;
@@ -57,6 +57,9 @@
 
 /* medium display */
 @media screen and (min-width: 768px) and (max-width: 1279px) {
+	.max_width {
+		width: 450px;
+	}
 	.toast_message {
 		flex-direction: row;
 		column-gap: 0.8rem;
@@ -71,10 +74,7 @@
 	.toast_width_confirm {
 		padding: 1rem 1.5rem;
 	}
-	.max_width {
-		width: 445px;
-		overflow: hidden;
-	}
+
 	/* footer */
 	._footer {
 		white-space: break-spaces;
@@ -114,6 +114,9 @@
 
 /* small display */
 @media screen and (min-width: 481px) and (max-width: 767px) {
+	.max_width {
+		width: 390px;
+	}
 	.toast_message {
 		flex-direction: row;
 		font-size: 17px;
@@ -128,10 +131,7 @@
 	.toast_width_confirm {
 		padding: 1rem 1.5rem;
 	}
-	.max_width {
-		width: 390px;
-		overflow: hidden;
-	}
+
 	/* footer */
 	._footer {
 		white-space: break-spaces;
@@ -166,16 +166,25 @@
 }
 
 @media screen and (min-width: 120px) and (max-width: 480px) {
+	.max_width {
+		width: 95vw;
+	}
 	.toast_width {
 		padding: 0.425rem 1.1rem;
+	}
+	.toast_message {
+		flex-direction: row;
+		align-items: center;
+		gap: 0rem 0.6rem;
+		font-size: 16px;
+		line-height: 1.25rem;
+		font-weight: 500;
+		letter-spacing: -0.4px;
 	}
 	.toast_width_confirm {
 		padding: 0.925rem 0.875rem;
 	}
-	.max_width {
-		width: 95vw;
-		overflow: hidden;
-	}
+
 	/* footer */
 	._footer {
 		white-space: break-spaces;
@@ -187,15 +196,6 @@
 		line-height: 1.1rem;
 		padding: 0.325rem 0.575rem;
 		letter-spacing: -0.5px;
-	}
-	.toast_message {
-		flex-direction: row;
-		align-items: center;
-		gap: 0rem 0.6rem;
-		font-size: 16px;
-		line-height: 1.25rem;
-		font-weight: 500;
-		letter-spacing: -0.4px;
 	}
 
 	/* confirm toast component styles */
