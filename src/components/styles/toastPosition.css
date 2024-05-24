@@ -41,17 +41,42 @@
 	bottom: 1rem;
 }
 
-.topFull {
+/* .topFull {
 	justify-content: center;
 	align-items: center;
 	top: 0;
-	width: 100%;
+	width: 100vw;
 }
 .bottomFull {
 	justify-content: center;
 	align-items: center;
 	bottom: 0;
+	width: 100vw;
+} */
+body,
+html {
+	margin: 0;
+	padding: 0;
+}
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+.topFull,
+.bottomFull {
+	justify-content: center;
+	align-items: center;
 	width: 100%;
+	left: 0;
+}
+
+.topFull {
+	top: 0;
+}
+
+.bottomFull {
+	bottom: 0;
 }
 
 /* 

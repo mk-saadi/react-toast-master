@@ -500,19 +500,22 @@ export const ToastProvider = ({ children }) => {
 							style={{ zIndex: "9999" }}
 						>
 							<div
-								className={`inner_container max_width ${toastClasses[toastType]} ${toastBackground} ${toastSkew} ${toastShadow} ${toastRadius}`}
+								className={`inner_container ${
+									toastPG === "bottomFull" || toastPG === "topFull"
+										? "toast_width_full"
+										: "max_width"
+								} ${
+									toastClasses[toastType]
+								} ${toastBackground} ${toastSkew} ${toastShadow} ${toastRadius}`}
 								onMouseEnter={handleMouseEnter}
 								onMouseLeave={handleMouseLeave}
 							>
 								<div
-									className={`
-								${
-									toastPG === "bottomFull" || toastPG === "topFull"
-										? "toast_width_full"
-										: toastType === "confirm" || toastType === "confirmDark"
-										? "toast_width_confirm"
-										: "toast_width"
-								}`}
+									className={`${
+										toastType === "confirm" || toastType === "confirmDark"
+											? "toast_width_confirm"
+											: "toast_width"
+									}`}
 								>
 									<div className={`toast_message ${toastAlignment}`}>
 										{toastType !== "confirm" &&
