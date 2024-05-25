@@ -20,25 +20,3 @@
 .rounded_full {
 	border-radius: 9999px;
 }
-
-.border_white {
-	border: 1px solid #fff;
-}
-.border_dark {
-	border: 1px solid #141318;
-}
-.border_success {
-	border: 1px solid #22c55e;
-}
-.border_error {
-	border: 1px solid #dc2626;
-}
-.border_warning {
-	border: 1px solid #edc319;
-}
-.border_info {
-	border: 1px solid #2196f3;
-}
-.border_neutral {
-	border: 1px solid rgba(136, 136, 136, 0.651);
-}
