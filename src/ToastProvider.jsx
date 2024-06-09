@@ -250,21 +250,19 @@ export const ToastProvider = ({ children }) => {
 
 		if (type === "loading" || type === "loadingWhite" || type === "loadingDark") {
 			setShowLoadFooter(false);
-			setTimeout(() => setShowLoadFooter(true), 7330);
+			setTimeout(() => setShowLoadFooter(true), 5330);
 		}
 		if (type === "loading" || type === "loadingWhite" || type === "loadingDark") {
 			setToastType("");
 			setToastMessage("");
 			setLoadFooter("");
 			setFooter("");
-			setShowButton("");
 
 			setTimeout(() => {
 				setToastType(type);
 				setToastMessage(message);
 				setLoadFooter(loadFooter);
 				setFooter(footer);
-				setShowButton(cancelButton);
 			}, 330);
 
 			return;
@@ -542,7 +540,7 @@ export const ToastProvider = ({ children }) => {
 													: "div_hidden"
 											}`}
 										>
-											<div>
+											<>
 												<button
 													onClick={hideToast}
 													id="close"
@@ -564,7 +562,7 @@ export const ToastProvider = ({ children }) => {
 														size={18}
 													/>
 												</button>
-											</div>
+											</>
 										</div>
 									</div>
 
