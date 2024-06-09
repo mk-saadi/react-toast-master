@@ -26,6 +26,7 @@ export const ToastProvider = ({ children }) => {
 	const [toastMessage, setToastMessage] = useState("");
 	const [confirmResolve, setConfirmResolve] = useState(null);
 	const [toastTimeout, setToastTimeout] = useState(null);
+	const [showCloseButton, setShowCloseButton] = useState(true);
 	const [showButton, setShowButton] = useState(null);
 
 	const [toastBackground, setToastBackground] = useState("");
@@ -269,6 +270,21 @@ export const ToastProvider = ({ children }) => {
 			return;
 		}
 	};
+
+	/**
+	 * Handles the show/hide of the close button of the toast.
+	 *
+	 * The close button is hidden when the loading toast initially appears,
+	 * after 7 seconds the close button is shown.
+	 */
+	useEffect(() => {
+		if (toastType === "loading" || toastType === "loadingWhite" || toastType === "loadingDark") {
+			setShowCloseButton(false);
+			setTimeout(() => setShowCloseButton(true), 5000);
+		} else {
+			setShowCloseButton(true);
+		}
+	}, [toastType]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	useEffect(() => {
 		/**
@@ -516,6 +532,7 @@ export const ToastProvider = ({ children }) => {
 										{/* close button below */}
 										<div
 											className={`closeDiv ${
+												showCloseButton &&
 												showButton &&
 												toastType !== "confirm" &&
 												toastType !== "confirmDark" &&
