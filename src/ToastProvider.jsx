@@ -197,7 +197,7 @@ export const ToastProvider = ({ children }) => {
 			loadFooter = null,
 			footer = null,
 			skew = "",
-			cancelButton = false,
+			cancelButton = true,
 			shadow = "gray",
 			radius = "lg",
 			align = "center",
