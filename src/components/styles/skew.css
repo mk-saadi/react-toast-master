@@ -5,11 +5,9 @@
 	.right3 {
 		transform: skewX(-3deg);
 	}
-
 	.right6 {
 		transform: skewX(-6deg);
 	}
-
 	.right12 {
 		transform: skewX(-12deg);
 	}

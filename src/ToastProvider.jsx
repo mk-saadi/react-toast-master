@@ -85,9 +85,9 @@ export const ToastProvider = ({ children }) => {
 		center: "text_center",
 	};
 	const toastAwesomeSkew = {
-		right3: "three",
-		right6: "six",
-		right12: "twelve",
+		three: "right3",
+		six: "right6",
+		twelve: "right12",
 	};
 	const toastAwesomeShadow = {
 		none: "",
