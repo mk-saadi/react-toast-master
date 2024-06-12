@@ -151,22 +151,24 @@ export const ToastProvider = ({ children }) => {
 	};
 
 	/**
-	 * Displays a toast message.
+	 * Displays a toast notification with the given configuration.
+	 * If a toast is already being displayed, it will clear the previous timeout and replace it with the new toast.
 	 *
-	 * @param {Object} toast The toast object with the following properties:
-	 *     @param {string} type The type of the toast (e.g. success, error, etc.)
-	 *     @param {string} message The message to be displayed in the toast
-	 *     @param {string} bg The background color of the toast
-	 *     @param {string} position The position of the toast
-	 *     @param {string} transition The transition animation of the toast
-	 *     @param {*} loadFooter The footer will display after 7 seconds
-	 *     @param {*} footer The footer of the toast when it's not a "loading" and "confirm" toast
-	 *     @param {string} skew The skew of the toast
-	 *     @param {boolean} cancelButton Whether or not to display a cancel button
-	 *     @param {string} shadow The shadow of the toast
-	 *     @param {string} radius The border radius of the toast
-	 *     @param {string} align The alignment of the toasts text
-	 * @returns {Promise} A promise that resolves when the toast is confirmed/rejected
+	 * @param {Object} toast - The configuration object for the toast.
+	 * @param {string} [toast.type="success"] - The type of toast (e.g., "success", "error", "warning").
+	 * @param {string} [toast.message=""] - The message to be displayed in the toast.
+	 * @param {string} [toast.bg="white"] - The background color of the toast.
+	 * @param {string} [toast.position="top"] - The position of the toast on the screen.
+	 * @param {string} [toast.transition="zoom"] - The animation transition for the toast.
+	 * @param {*} [toast.loadFooter=null] - A function to load the footer of the toast.
+	 * @param {*} [toast.footer=null] - The footer content for the toast.
+	 * @param {string} [toast.skew=""] - The skew effect for the toast.
+	 * @param {boolean} [toast.cancelButton=true] - Whether to show the cancel button on the toast.
+	 * @param {string} [toast.shadow="gray"] - The shadow style for the toast.
+	 * @param {string} [toast.radius="lg"] - The border radius of the toast.
+	 * @param {string} [toast.align="center"] - The text alignment of the toast.
+	 *
+	 * @returns {Promise} A promise that resolves when the toast is confirmed or dismissed.
 	 */
 	const toastMaster = (toast) => {
 		if (toastTimeout) {
