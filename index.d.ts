@@ -5,7 +5,30 @@ declare module "react-toast-master" {
 	 * The options for the toast.
 	 */
 	export interface ToastOptions {
-		type?: "success" | "error" | "info" | "loading" | "warning" | "basic" | "confirm";
+		type?:
+			| "success"
+			| "successWhite"
+			| "successDark"
+			| "error"
+			| "errorWhite"
+			| "errorDark"
+			| "info"
+			| "infoWhite"
+			| "infoStayWhite"
+			| "infoDark"
+			| "infoStayDark"
+			| "loading"
+			| "loadingWhite"
+			| "loadingDark"
+			| "warning"
+			| "warningWhite"
+			| "warningStayWhite"
+			| warningDark
+			| "warningStayDark"
+			| "basic"
+			| "basicDark"
+			| "confirm"
+			| "confirmDark";
 		position?:
 			| "top"
 			| "topLeft"
