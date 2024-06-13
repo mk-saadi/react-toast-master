@@ -23,7 +23,7 @@ declare module "react-toast-master" {
 			| "warning"
 			| "warningWhite"
 			| "warningStayWhite"
-			| warningDark
+			| "warningDark"
 			| "warningStayDark"
 			| "basic"
 			| "basicDark"
