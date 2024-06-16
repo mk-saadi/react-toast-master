@@ -537,9 +537,7 @@ export const ToastProvider = ({ children }) => {
 												showCloseButton &&
 												showButton &&
 												toastType !== "confirm" &&
-												toastType !== "confirmDark" &&
-												toastPG !== "bottomFull" &&
-												toastPG !== "topFull"
+												toastType !== "confirmDark"
 													? `div_flex`
 													: "div_hidden"
 											}`}
