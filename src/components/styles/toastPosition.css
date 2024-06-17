@@ -1,17 +1,4 @@
 /* 
-	     		global style for toast 
-*/
-body,
-html {
-	margin: 0;
-	padding: 0;
-}
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-}
-/* 
 	     		toast position for small screens 
 */
 .top {
