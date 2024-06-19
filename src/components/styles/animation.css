@@ -10,31 +10,32 @@
 	display: flex;
 	flex-direction: column;
 	pointer-events: all;
+	width: 100%;
 }
 
 /* 
 	     		reveal animation css 
 */
 .outer_container.ani_down {
-	animation: slide_down 0.5s ease forwards;
+	animation: slide_down 0.35s ease forwards;
 }
 .outer_container.ani_top {
-	animation: slide_up 0.5s ease forwards;
+	animation: slide_up 0.35s ease forwards;
 }
 .outer_container.ani_left {
-	animation: slide_left 0.5s ease forwards;
+	animation: slide_left 0.35s ease forwards;
 }
 .outer_container.ani_right {
-	animation: slide_right 0.5s ease forwards;
+	animation: slide_right 0.35s ease forwards;
 }
 .outer_container.ani_fade {
-	animation: fade_in 0.5s ease forwards;
+	animation: fade_in 0.4s ease forwards;
 }
 .outer_container.ani_zoom {
-	animation: zoom_in 0.8s ease forwards;
+	animation: zoom_in 0.4s ease forwards;
 }
 .outer_container.ani_jelly {
-	animation: jelly 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.475) forwards;
+	animation: jelly 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.475) forwards;
 }
 
 /* 
@@ -78,7 +79,7 @@
 
 @keyframes fade_in {
 	from {
-		opacity: 0.2;
+		opacity: 0;
 	}
 	to {
 		opacity: 1;
@@ -110,25 +111,25 @@
 	     		closing animation css
 */
 .outer_container.ani_fade_out {
-	animation: fade_out 0.5s ease forwards;
+	animation: fade_out 0.35s ease forwards;
 }
 .outer_container.ani_zoom_out {
-	animation: zoom_out 0.5s ease-out forwards;
+	animation: zoom_out 0.35s ease-out forwards;
 }
 .outer_container.ani_slide_out_down {
-	animation: slide_out_down 0.5s ease forwards;
+	animation: slide_out_down 0.35s ease forwards;
 }
 .outer_container.ani_slide_out_up {
-	animation: slide_out_up 0.5s ease forwards;
+	animation: slide_out_up 0.35s ease forwards;
 }
 .outer_container.ani_slide_out_left {
-	animation: slide_out_left 0.5s ease forwards;
+	animation: slide_out_left 0.35s ease forwards;
 }
 .outer_container.ani_slide_out_right {
-	animation: slide_out_right 0.5s ease forwards;
+	animation: slide_out_right 0.35s ease forwards;
 }
 .outer_container.ani_jelly_out {
-	animation: jelly_out 0.5s ease forwards;
+	animation: jelly_out 0.35s ease forwards;
 }
 
 /* 
@@ -174,11 +175,9 @@
 @keyframes fade_out {
 	from {
 		opacity: 1;
-		scale: 1;
 	}
 	to {
 		opacity: 0;
-		scale: 0.95;
 	}
 }
 
