@@ -47,7 +47,7 @@ function App() {
 			type: "errorWhite",
 			message: "Uh oh! Something went wrong.",
 			footer: (
-				<div className="flex justify-between">
+				<div className="flex justify-between w-full">
 					<p>There was a problem with your request.</p>{" "}
 					<span className="border border-white cursor-pointer duration-100 hover:bg-white hover:text-[#dc2626] h-min px-2 rounded-sm text-white whitespace-nowrap">
 						Try again
@@ -73,7 +73,7 @@ function App() {
 
 ## 📔 Documentation and Demo
 
-Check [website](https://react-toast-master.web.app)( under development ) to get a better understanding!
+Check [website](https://react-toast-master.netlify.app/) to get a better understanding!
 
 ## 📜 License
 

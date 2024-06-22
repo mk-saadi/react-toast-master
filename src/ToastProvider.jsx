@@ -171,10 +171,10 @@ export const ToastProvider = ({ children }) => {
 	 * @returns {Promise} A promise that resolves when the toast is confirmed or dismissed.
 	 */
 	const toastMaster = (toast) => {
-		if (toastTimeout) {
-			clearTimeout(toastTimeout);
-		}
 		return new Promise((resolve) => {
+			if (toastTimeout) {
+				clearTimeout(toastTimeout);
+			}
 			setToastAnimation(animation);
 
 			const openToast = () => {
