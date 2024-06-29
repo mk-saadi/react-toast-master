@@ -57,7 +57,7 @@ declare module "react-toast-master" {
 			| "warning"
 			| "around";
 		radius?: "none" | "sm" | "md" | "lg" | "xl" | "twoXl" | "full";
-		bg?: "dark" | "white" | "info" | "error" | "success" | "gray" | "glass" | "transparent";
+		bg?: "dark" | "white" | "info" | "error" | "success" | "warning" | "gray" | "glass" | "transparent";
 		align?: "left" | "right" | "center";
 		footer?: ReactNode;
 		loadFooter?: ReactNode;
