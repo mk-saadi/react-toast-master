@@ -42,7 +42,7 @@ declare module "react-toast-master" {
 			| "topFull"
 			| "bottomFull";
 		message?: "string";
-		transition?: "zoom" | "fade" | "slide" | "down" | "up" | "left" | "right" | "jelly";
+		transition?: "zoom" | "fade" | "slide" | "down" | "top" | "left" | "right" | "jelly";
 		cancelButton?: boolean;
 		skew?: "three" | "six" | "twelve";
 		shadow?:
