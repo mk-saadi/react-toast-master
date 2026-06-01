@@ -30,7 +30,8 @@ declare module "react-toast-master" {
 			| "basic"
 			| "basicDark"
 			| "confirm"
-			| "confirmDark";
+			| "confirmDark"
+			| "custom";
 		position?:
 			| "top"
 			| "topLeft"
@@ -41,7 +42,7 @@ declare module "react-toast-master" {
 			| "center"
 			| "topFull"
 			| "bottomFull";
-		message?: "string";
+		message?: string;
 		transition?: "zoom" | "fade" | "slide" | "down" | "top" | "left" | "right" | "jelly";
 		cancelButton?: boolean;
 		skew?: "three" | "six" | "twelve";
@@ -86,7 +87,7 @@ declare module "react-toast-master" {
 	 */
 	export interface ToastFunctions {
 		toastMaster: (options?: ToastOptions) => void;
-		hideToast: () => void;
+		hideToast: (id?: string) => void;
 	}
 
 	/**
