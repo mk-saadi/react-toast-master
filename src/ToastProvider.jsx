@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useMemo } from "react";
 import { ToastItem } from "./components/ToastItem";
 import { useToastManager } from "./hooks/useToastManager";
 
@@ -27,8 +27,13 @@ export const ToastProvider = ({ children }) => {
 		handleMouseLeave,
 	} = useToastManager();
 
+	const contextValue = useMemo(
+		() => ({ toastMaster, hideToast }),
+		[toastMaster, hideToast],
+	);
+
 	return (
-		<ToastContext.Provider value={{ toastMaster, hideToast }}>
+		<ToastContext.Provider value={contextValue}>
 			{children}
 
 			{toasts.map((toast) => (
