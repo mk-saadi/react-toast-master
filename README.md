@@ -106,7 +106,7 @@ function ToastButton() {
 | `skew`         | string    | `""`        | Skew transform                  |
 | `footer`       | ReactNode | `null`      | Footer content                  |
 | `loadFooter`   | ReactNode | `null`      | Loading state footer            |
-| `timeout`      | number    | `3000`      | Auto-hide delay in ms           |
+| `timeout`      | number    | `4500`      | Auto-hide delay in ms           |
 | `custom`       | ReactNode | `null`      | Custom toast content            |
 
 ## 🎨 Types
@@ -127,7 +127,7 @@ function ToastButton() {
 ```jsx
 const { toastMaster, hideToast } = useToast();
 
-// Show a toast — returns a Promise (resolves true/false for confirm toasts)
+// Regular types return nothing; confirm/confirmDark return a Promise<boolean>
 toastMaster({ type: "success", message: "Done!" });
 
 // Hide the last toast, or pass an id to hide a specific one

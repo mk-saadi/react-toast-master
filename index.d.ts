@@ -31,7 +31,8 @@ declare module "react-toast-master" {
 			| "basicDark"
 			| "confirm"
 			| "confirmDark"
-			| "custom";
+			| "custom"
+			| "customStay";
 		position?:
 			| "top"
 			| "topLeft"
@@ -43,7 +44,7 @@ declare module "react-toast-master" {
 			| "topFull"
 			| "bottomFull";
 		message?: string;
-		transition?: "zoom" | "fade" | "slide" | "down" | "top" | "left" | "right" | "jelly";
+		transition?: "zoom" | "fade" | "down" | "top" | "left" | "right" | "jelly";
 		cancelButton?: boolean;
 		skew?: "three" | "six" | "twelve";
 		shadow?:
@@ -60,12 +61,14 @@ declare module "react-toast-master" {
 		radius?: "none" | "sm" | "md" | "lg" | "xl" | "twoXl" | "full";
 		bg?: "dark" | "white" | "info" | "error" | "success" | "warning" | "gray" | "glass" | "transparent";
 		align?: "left" | "right" | "center";
+		timeout?: number;
+		custom?: ReactNode;
 		footer?: ReactNode;
 		loadFooter?: ReactNode;
 	}
 
 	/**
-	 * The props for the ToastContainer.
+	 * @deprecated Kept for backward compatibility. Toast options are described by `ToastOptions`.
 	 */
 	export interface ToastContainerProps {
 		type: string;
@@ -80,6 +83,13 @@ declare module "react-toast-master" {
 		align: string;
 		footer: ReactNode;
 		loadFooter: ReactNode;
+	}
+
+	/**
+	 * The props for the ToastProvider.
+	 */
+	export interface ToastProviderProps {
+		children?: ReactNode;
 	}
 
 	/**
@@ -102,7 +112,7 @@ declare module "react-toast-master" {
 	export function useToast(): ToastFunctions;
 
 	/**
-	 * The ToastProvider component.
+	 * The ToastProvider component. Wraps the app and provides the toast context.
 	 */
-	export const ToastProvider: ComponentType<ToastContainerProps>;
+	export const ToastProvider: ComponentType<ToastProviderProps>;
 }
