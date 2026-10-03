@@ -86,7 +86,12 @@ declare module "react-toast-master" {
 	 * The functions exposed by the useToast hook.
 	 */
 	export interface ToastFunctions {
-		toastMaster: (options?: ToastOptions) => void;
+		/**
+		 * Fires a toast. Returns `void` for regular toasts, or a
+		 * Promise<boolean> that resolves when a confirm-type toast
+		 * is confirmed (true) or dismissed/cancelled (false).
+		 */
+		toastMaster: (options?: ToastOptions) => void | Promise<boolean>;
 		hideToast: (id?: string) => void;
 	}
 

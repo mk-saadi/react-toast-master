@@ -18,10 +18,13 @@ export const useToastManager = () => {
 	}, []);
 
 	const clearToastTimeout = useCallback((id) => {
-		if (timeoutRefs.current.has(id)) {
-			clearTimeout(timeoutRefs.current.get(id));
-			timeoutRefs.current.delete(id);
-		}
+		const keys = [id, `${id}:loadingCloseButton`, `${id}:loadingFooter`];
+		keys.forEach((key) => {
+			if (timeoutRefs.current.has(key)) {
+				clearTimeout(timeoutRefs.current.get(key));
+				timeoutRefs.current.delete(key);
+			}
+		});
 	}, []);
 
 	const hideToast = useCallback((id) => {
@@ -43,7 +46,10 @@ export const useToastManager = () => {
 
 		const timeout = setTimeout(() => {
 			setToasts((curr) => curr.filter((t) => t.id !== toastId));
-			confirmPromises.current.delete(toastId);
+			if (confirmPromises.current.has(toastId)) {
+				confirmPromises.current.get(toastId)(false);
+				confirmPromises.current.delete(toastId);
+			}
 		}, TOAST_BEHAVIOR.durations.animationClose);
 
 		timeoutRefs.current.set(toastId, timeout);
@@ -187,41 +193,45 @@ export const useToastManager = () => {
 							: toast,
 					);
 
-					setTimeout(() => {
+					const evictionTimeout = setTimeout(() => {
 						setToasts((currentToasts) =>
 							currentToasts.filter((t) => t.id !== oldestAliveToast.id),
 						);
 
-						if (timeoutRefs.current.has(oldestAliveToast.id)) {
-							clearTimeout(timeoutRefs.current.get(oldestAliveToast.id));
-							timeoutRefs.current.delete(oldestAliveToast.id);
-						}
+						clearToastTimeout(oldestAliveToast.id);
 					}, TOAST_BEHAVIOR.durations.animationClose);
+					timeoutRefs.current.set(oldestAliveToast.id, evictionTimeout);
 				}
 
 				return [...updatedToasts, toastData];
 			});
 
 			if (TOAST_BEHAVIOR.loadingTypes.includes(type)) {
-				setTimeout(() => {
-					setToasts((prevToasts) => {
-						const toastIndex = prevToasts.findIndex((t) => t.id === id);
-						if (toastIndex === -1) return prevToasts;
-						const updatedToasts = [...prevToasts];
-						updatedToasts[toastIndex].showCloseButton = true;
-						return updatedToasts;
-					});
-				}, TOAST_BEHAVIOR.durations.loadingCloseButtonDelay);
+				timeoutRefs.current.set(
+					`${id}:loadingCloseButton`,
+					setTimeout(() => {
+						setToasts((prevToasts) => {
+							const toastIndex = prevToasts.findIndex((t) => t.id === id);
+							if (toastIndex === -1) return prevToasts;
+							const updatedToasts = [...prevToasts];
+							updatedToasts[toastIndex].showCloseButton = true;
+							return updatedToasts;
+						});
+					}, TOAST_BEHAVIOR.durations.loadingCloseButtonDelay),
+				);
 
-				setTimeout(() => {
-					setToasts((prevToasts) => {
-						const toastIndex = prevToasts.findIndex((t) => t.id === id);
-						if (toastIndex === -1) return prevToasts;
-						const updatedToasts = [...prevToasts];
-						updatedToasts[toastIndex].showLoadFooter = true;
-						return updatedToasts;
-					});
-				}, TOAST_BEHAVIOR.durations.loadingFooterDelay);
+				timeoutRefs.current.set(
+					`${id}:loadingFooter`,
+					setTimeout(() => {
+						setToasts((prevToasts) => {
+							const toastIndex = prevToasts.findIndex((t) => t.id === id);
+							if (toastIndex === -1) return prevToasts;
+							const updatedToasts = [...prevToasts];
+							updatedToasts[toastIndex].showLoadFooter = true;
+							return updatedToasts;
+						});
+					}, TOAST_BEHAVIOR.durations.loadingFooterDelay),
+				);
 			}
 
 			if (TOAST_BEHAVIOR.overlayTypes.includes(type) && resolve) {
@@ -246,9 +256,15 @@ export const useToastManager = () => {
 
 	const toastMaster = useCallback(
 		(toast) => {
+			const type = toast?.type ?? "success";
+
+			if (!TOAST_BEHAVIOR.overlayTypes.includes(type)) {
+				openNewToast(toast);
+				return;
+			}
+
 			return new Promise((resolve) => {
-				const toastId = openNewToast(toast, resolve);
-				return toastId;
+				openNewToast(toast, resolve);
 			});
 		},
 		[openNewToast],
