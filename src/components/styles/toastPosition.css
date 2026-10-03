@@ -1,11 +1,6 @@
-body,
-html {
-	margin: 0;
-	padding: 0;
-}
-*,
-*::before,
-*::after {
+/* Scoped to the toast root so host-app elements are unaffected */
+.outer_container,
+.outer_container * {
 	box-sizing: border-box;
 }
 

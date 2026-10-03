@@ -245,8 +245,8 @@
 	position: relative;
 }
 
-/* Reset styles for <p> tags inside the .toast component */
-p {
+/* Reset styles for <p> tags inside the toast component only */
+.outer_container p {
 	margin-block-start: 0;
 	margin-block-end: 0;
 	margin-inline-start: 0;
