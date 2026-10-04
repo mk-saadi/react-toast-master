@@ -202,7 +202,10 @@ Use `customStay` instead of `custom` for a custom toast that does **not** auto-h
 
 ## 📋 Changelog
 
-### v3.0.2
+> Entries cover v3.0.0 and later. Releases up to v2.3.0 shipped before this changelog
+> existed and are not documented here.
+
+### v3.0.2 - 2026-10-04
 
 **Fixed**
 
@@ -234,6 +237,44 @@ Use `customStay` instead of `custom` for a custom toast that does **not** auto-h
   `toastMaster` returns `void | Promise<boolean>`, and `customStay`/`timeout`/`custom` are
   typed.
 - New README sections: Time Duration, Custom Toasts, and this changelog.
+
+### v3.0.1 - 2026-10-03
+
+**Changed**
+
+- **React 19 support.** Peer dependencies widened to `react: ^18 || ^19` and
+  `react-dom: ^18 || ^19`. Previously React 19 consumers saw a peer conflict warning.
+- **Repository URL normalized** to `git+https://github.com/mk-saadi/react-toast-master.git`,
+  so `npm` records the correct clone source.
+
+### v3.0.0 - 2026-06-01
+
+The largest release to date — a full rewrite of the internals and a switch to a modern
+build pipeline.
+
+**Added**
+
+- **`custom` / `customStay` toast types** for fully custom ReactNode content.
+- **SSR support** via `ToastProvider`, safe to render on the server.
+- **`ToastItem.jsx` extracted** into its own component, taking rendering out of the provider.
+- **New modular internals**: `hooks/useToastManager.js` (all state, timers, and confirm
+  promises), `constants/behavior.js` and `constants/styles.js` (behavior durations and class
+  maps), and `utils/getAnimation.js` (entry/exit animation mapping).
+- **`files` field** restricting the published package to `dist` + `index.d.ts`.
+- **New README structure**: Setup, Options, Types, and Hook sections.
+
+**Changed**
+
+- **Build migrated from Webpack + Babel to Vite.** Entry points changed from
+  `build/index.js` to `dist/index.es.js` (ESM) and `dist/index.umd.js` (UMD). `.babelrc`,
+  `webpack.config.js`, and all webpack/Babel devDependencies were removed.
+- **`react` and `react-dom` moved from dependencies to peerDependencies**, so consumers
+  control their own React version and only one copy ends up in the bundle.
+- **`lucide-react` upgraded** `^0.378.0` → `^1.17.0`.
+- **`ToastProvider` rewritten** (683 lines) with the state logic extracted into the new
+  manager hook.
+- **Full CSS overhaul** across all style modules, with responsive breakpoints.
+- **`index.d.ts` rewritten** (205 lines) to match the new architecture.
 
 ## 📔 Documentation and Demo
 
