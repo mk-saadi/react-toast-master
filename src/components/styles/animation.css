@@ -93,7 +93,6 @@
 	}
 	to {
 		scale: 1;
-		scale: 1;
 	}
 }
 @keyframes jelly {
@@ -242,7 +241,7 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: glass;
+	background-color: transparent;
 	transition: background-color 0.35s ease-in-out;
 	z-index: 9997;
 	backdrop-filter: blur(0.7px);

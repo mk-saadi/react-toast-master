@@ -38,11 +38,11 @@ export const ToastItem = ({ toast, onHide, onConfirm, onCancel, onMouseEnter, on
 			{/* Toast container */}
 			<div
 				className={`
-							outer_container 
-							${toast.position} 
-							${toast.animation}
-							${toast.isExiting ? "exiting" : ""}
-						`}
+					outer_container 
+					${toast.position} 
+					${toast.animation}
+					${toast.isExiting ? "exiting" : ""}
+					`}
 				style={{ zIndex: 9999 }}
 				onAnimationEnd={() => {
 					if (toast.isExiting) {
@@ -60,7 +60,7 @@ export const ToastItem = ({ toast, onHide, onConfirm, onCancel, onMouseEnter, on
 					>
 						{toast.custom}
 					</div>
-				) : isConfirmType ? (
+				) : (
 					<div
 						className={`inner_container ${
 							isFullWidth ? "toast_width_full" : "max_width"
@@ -72,7 +72,10 @@ export const ToastItem = ({ toast, onHide, onConfirm, onCancel, onMouseEnter, on
 					>
 						<div className={isConfirmType ? "toast_width_confirm" : "toast_width"}>
 							{/* Toast message area */}
-							<div className={`confirm_message ${toast.alignment}`}>
+							<div
+								className={`${isConfirmType ? "confirm_message" : "toast_message"} ${toast.alignment}`}
+							>
+								{/* Icon - hidden for basic types; getIconForType returns null for confirm types */}
 								{!isBasicType && (
 									<div>
 										<span className="sr_only">toast icon</span>
@@ -83,7 +86,7 @@ export const ToastItem = ({ toast, onHide, onConfirm, onCancel, onMouseEnter, on
 								{/* Message content */}
 								<>{toast.message}</>
 
-								{/* Close button */}
+								{/* Close button (hidden for confirm toasts) */}
 								<div
 									className={`closeDiv ${
 										toast.showCloseButton && toast.showButton && !isConfirmType
@@ -112,113 +115,6 @@ export const ToastItem = ({ toast, onHide, onConfirm, onCancel, onMouseEnter, on
 							</div>
 
 							{/* Inner footer for confirm toasts */}
-							{toast.footer && (
-								<InnerFooter
-									footer={toast.footer}
-									toastBG={backgroundKey}
-									toastAlignment={toast.alignment}
-								/>
-							)}
-
-							{/* Confirm buttons for confirm toasts */}
-							<div
-								className={`confirm_div ${
-									toast.alignment === "text_start"
-										? "justify_end"
-										: toast.alignment === "text_end"
-											? "justify_start"
-											: toast.alignment === "text_center"
-												? "justify_center"
-												: null
-								}`}
-							>
-								<button
-									className={`cancel_button ${
-										backgroundKey === "white"
-											? "cancel_button_dark"
-											: backgroundKey === "success" ||
-												  backgroundKey === "warning" ||
-												  backgroundKey === "error" ||
-												  backgroundKey === "info" ||
-												  backgroundKey === "dark"
-												? "cancel_button_all"
-												: "cancel_button_glass"
-									}`}
-									onClick={() => onCancel(toast.id)}
-								>
-									<span className="sr_only">close toast</span>
-									Cancel
-								</button>
-
-								<button
-									className={`confirm_button ${
-										backgroundKey === "dark"
-											? "confirm_button_dark"
-											: "confirm_button_white"
-									}`}
-									onClick={() => onConfirm(toast.id)}
-								>
-									<span className="sr_only">confirm action</span>
-									Confirm
-								</button>
-							</div>
-						</div>
-					</div>
-				) : (
-					<div
-						className={`inner_container ${
-							isFullWidth ? "toast_width_full" : "max_width"
-						} ${TOAST_STYLES.textClasses[toast.type]} ${toast.background} ${
-							toast.skew
-						} ${toast.shadow} ${toast.radius}`}
-						onMouseEnter={() => onMouseEnter(toast.id, toast.type)}
-						onMouseLeave={() => onMouseLeave(toast.id, toast.type)}
-					>
-						<div className={isConfirmType ? "toast_width_confirm" : "toast_width"}>
-							{/* Toast message area */}
-							<div className={`toast_message ${toast.alignment}`}>
-								{/* Icon - show for all except confirm and basic types */}
-								{!isConfirmType && !isBasicType && (
-									<div>
-										<span className="sr_only">toast icon</span>
-										<span aria-hidden="true">{getIconForType(toast.type)}</span>
-									</div>
-								)}
-
-								{/* Message content */}
-								<>{toast.message}</>
-
-								{/* Close button */}
-								<div
-									className={`closeDiv ${
-										toast.showCloseButton && toast.showButton && !isConfirmType
-											? "div_flex"
-											: "div_hidden"
-									}`}
-								>
-									<button
-										onClick={() => onHide(toast.id)}
-										id={`close-${toast.id}`}
-										className={`closeButton
-														${
-															backgroundKey === "white"
-																? "bg_whiter"
-																: backgroundKey === "glass" ||
-																	  backgroundKey === "transparent"
-																	? "bg_glass_close"
-																	: "bg_darker"
-														}`}
-									>
-										<span className="sr_only">close toast</span>
-										<X
-											aria-hidden="true"
-											size={18}
-										/>
-									</button>
-								</div>
-							</div>
-
-							{/* Inner footer for confirm toasts */}
 							{isConfirmType && toast.footer && (
 								<InnerFooter
 									footer={toast.footer}
@@ -230,29 +126,27 @@ export const ToastItem = ({ toast, onHide, onConfirm, onCancel, onMouseEnter, on
 							{/* Confirm buttons for confirm toasts */}
 							{isConfirmType && (
 								<div
-									className={`confirm_div
-													${
-														toast.alignment === "text_start"
-															? "justify_end"
-															: toast.alignment === "text_end"
-																? "justify_start"
-																: toast.alignment === "text_center"
-																	? "justify_center"
-																	: null
-													}
-													`}
+									className={`confirm_div ${
+										toast.alignment === "text_start"
+											? "justify_end"
+											: toast.alignment === "text_end"
+												? "justify_start"
+												: toast.alignment === "text_center"
+													? "justify_center"
+													: null
+									}`}
 								>
 									<button
 										className={`cancel_button ${
 											backgroundKey === "white"
 												? "cancel_button_dark"
 												: backgroundKey === "success" ||
-													  backgroundKey === "warning" ||
-													  backgroundKey === "error" ||
-													  backgroundKey === "info" ||
-													  backgroundKey === "dark"
-													? "cancel_button_all"
-													: "cancel_button_glass"
+												  backgroundKey === "warning" ||
+												  backgroundKey === "error" ||
+												  backgroundKey === "info" ||
+												  backgroundKey === "dark"
+														? "cancel_button_all"
+														: "cancel_button_glass"
 										}`}
 										onClick={() => onCancel(toast.id)}
 									>
@@ -261,8 +155,9 @@ export const ToastItem = ({ toast, onHide, onConfirm, onCancel, onMouseEnter, on
 									</button>
 
 									<button
-										className={`confirm_button
-														${backgroundKey === "dark" ? "confirm_button_dark" : "confirm_button_white"}`}
+										className={`confirm_button ${
+											backgroundKey === "dark" ? "confirm_button_dark" : "confirm_button_white"
+										}`}
 										onClick={() => onConfirm(toast.id)}
 									>
 										<span className="sr_only">confirm action</span>

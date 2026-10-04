@@ -41,6 +41,19 @@ export const TOAST_STYLES = {
 		transparent: "bg_transparent",
 	},
 
+	// Footer background classes
+	footerClasses: {
+		dark: "footer_dark",
+		warning: "footer_dark",
+		white: "footer_white",
+		info: "footer_info",
+		error: "footer_error",
+		success: "footer_success",
+		gray: "footer_success",
+		glass: "footer_success",
+		transparent: "footer_success",
+	},
+
 	// Position classes
 	positionClasses: {
 		top: "top",
