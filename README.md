@@ -200,6 +200,41 @@ Use `customStay` instead of `custom` for a custom toast that does **not** auto-h
 >   will anchor to the page instead of the toast.
 > - Keep dark-on-light or light-on-dark text in sync with the background you choose.
 
+## 📋 Changelog
+
+### v3.0.2
+
+**Fixed**
+
+- **CSS no longer leaks into host apps.** Global resets (including a bare `p { margin: 0 }`
+  that stripped paragraph margins across your entire page) are now scoped under
+  `.outer_container`. Importing `dist/style.css` is safe again.
+- **`toastMaster` no longer leaks pending Promises.** Only `confirm`/`confirmDark` return a
+  Promise now; every other type returned a permanently-pending one. Confirm Promises also
+  resolve on `Escape` and close-button dismissal instead of hanging forever.
+- **Toasts no longer vanish mid-animation.** The removal timeout (300ms) was shorter than
+  the CSS exit animations (350–500ms), so toasts popped out abruptly. Timers are now the
+  single removal mechanism, with durations matched to the actual CSS.
+- **Hovering a dismissing toast can no longer cancel its exit**, and `Escape` ignores toasts
+  that are already exiting.
+- **`npm run dev` works.** Added the missing `src/main.jsx` entry point.
+
+**Changed**
+
+- The entry point exported two names that did not exist (`useToastContext`, and `useToast`
+  from a nonexistent module). It now re-exports the real API surface: `ToastContext`,
+  `ToastProvider`, `useToast`.
+- `ToastContext` value is memoized, so consumers no longer re-render on every toast change.
+- Removed ~138 lines of duplicated render branches and consolidated the footer background
+  map into `TOAST_STYLES.footerClasses`.
+
+**Docs & types**
+
+- `index.d.ts` synced with the runtime: `ToastProvider` correctly takes `children`,
+  `toastMaster` returns `void | Promise<boolean>`, and `customStay`/`timeout`/`custom` are
+  typed.
+- New README sections: Time Duration, Custom Toasts, and this changelog.
+
 ## 📔 Documentation and Demo
 
 Check the [website](https://react-toast-master.netlify.app/) for a full demo and examples!
