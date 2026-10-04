@@ -3,6 +3,11 @@ import { TOAST_STYLES } from "../constants/styles";
 import { getAnimation } from "../utils/getAnimation";
 import { TOAST_BEHAVIOR } from "../constants/behavior";
 
+const getExitDuration = (positionKey) =>
+	positionKey === "bottomFull" || positionKey === "topFull"
+		? TOAST_BEHAVIOR.durations.animationCloseFull
+		: TOAST_BEHAVIOR.durations.animationClose;
+
 export const useToastManager = () => {
 	const [toasts, setToasts] = useState([]);
 	const confirmPromises = useRef(new Map());
@@ -31,14 +36,14 @@ export const useToastManager = () => {
 		const toastId = id ?? toastsRef.current?.[toastsRef.current.length - 1]?.id;
 		if (!toastId) return;
 
+		const target = toastsRef.current.find((t) => t.id === toastId);
+		if (!target || target.isExiting) return;
+
 		setToasts((prev) => {
 			const idx = prev.findIndex((t) => t.id === toastId);
-			if (idx === -1) return prev;
+			if (idx === -1 || prev[idx].isExiting) return prev;
 			const t = prev[idx];
-			const posKey = Object.keys(TOAST_STYLES.positionClasses).find(
-				(k) => TOAST_STYLES.positionClasses[k] === t.position,
-			);
-			const closingAnim = getAnimation(t.animation, posKey);
+			const closingAnim = getAnimation(t.animation, t.positionKey);
 			const copy = [...prev];
 			copy[idx] = { ...t, animation: closingAnim, isExiting: true };
 			return copy;
@@ -50,22 +55,26 @@ export const useToastManager = () => {
 				confirmPromises.current.get(toastId)(false);
 				confirmPromises.current.delete(toastId);
 			}
-		}, TOAST_BEHAVIOR.durations.animationClose);
+		}, getExitDuration(target.positionKey));
 
 		timeoutRefs.current.set(toastId, timeout);
 	}, []);
 
 	const handleConfirm = useCallback(
 		(id) => {
+			const target = toastsRef.current.find((t) => t.id === id);
+			if (!target || target.isExiting) return;
+
 			setToasts((prevToasts) => {
 				const toastIndex = prevToasts.findIndex((toast) => toast.id === id);
-				if (toastIndex === -1) return prevToasts;
+				if (toastIndex === -1 || prevToasts[toastIndex].isExiting) return prevToasts;
 
 				const updatedToasts = [...prevToasts];
 				const toast = updatedToasts[toastIndex];
 				updatedToasts[toastIndex] = {
 					...toast,
-					animation: getAnimation(toast.animation, toast.position),
+					animation: getAnimation(toast.animation, toast.positionKey),
+					isExiting: true,
 				};
 				return updatedToasts;
 			});
@@ -81,7 +90,7 @@ export const useToastManager = () => {
 					}
 
 					setToasts((prevToasts) => prevToasts.filter((toast) => toast.id !== id));
-				}, TOAST_BEHAVIOR.durations.animationClose),
+				}, getExitDuration(target.positionKey)),
 			);
 		},
 		[clearToastTimeout],
@@ -102,6 +111,8 @@ export const useToastManager = () => {
 	const handleMouseEnter = useCallback(
 		(id, type) => {
 			if (TOAST_BEHAVIOR.autoHideTypes.includes(type)) {
+				const toast = toastsRef.current.find((t) => t.id === id);
+				if (!toast || toast.isExiting) return;
 				clearToastTimeout(id);
 			}
 		},
@@ -111,6 +122,8 @@ export const useToastManager = () => {
 	const handleMouseLeave = useCallback(
 		(id, type) => {
 			if (TOAST_BEHAVIOR.autoHideTypes.includes(type)) {
+				const toast = toastsRef.current.find((t) => t.id === id);
+				if (!toast || toast.isExiting) return;
 				timeoutRefs.current.set(
 					id,
 					setTimeout(() => hideToast(id), TOAST_BEHAVIOR.durations.afterHover),
@@ -153,6 +166,7 @@ export const useToastManager = () => {
 				id,
 				type,
 				message,
+				positionKey: position,
 				position: positionClass,
 				background,
 				animation,
@@ -183,23 +197,23 @@ export const useToastManager = () => {
 				if (aliveToasts.length >= 3) {
 					const oldestAliveToast = aliveToasts[0];
 
-					updatedToasts = updatedToasts.map((toast) =>
-						toast.id === oldestAliveToast.id
-							? {
-									...toast,
-									isExiting: true,
-									animation: getAnimation(toast.animation, toast.position),
-								}
-							: toast,
+				updatedToasts = updatedToasts.map((toast) =>
+					toast.id === oldestAliveToast.id
+						? {
+								...toast,
+								isExiting: true,
+								animation: getAnimation(toast.animation, toast.positionKey),
+							}
+						: toast,
+				);
+
+				const evictionTimeout = setTimeout(() => {
+					setToasts((currentToasts) =>
+						currentToasts.filter((t) => t.id !== oldestAliveToast.id),
 					);
 
-					const evictionTimeout = setTimeout(() => {
-						setToasts((currentToasts) =>
-							currentToasts.filter((t) => t.id !== oldestAliveToast.id),
-						);
-
-						clearToastTimeout(oldestAliveToast.id);
-					}, TOAST_BEHAVIOR.durations.animationClose);
+					clearToastTimeout(oldestAliveToast.id);
+				}, getExitDuration(oldestAliveToast.positionKey));
 					timeoutRefs.current.set(oldestAliveToast.id, evictionTimeout);
 				}
 
@@ -272,17 +286,16 @@ export const useToastManager = () => {
 
 	useEffect(() => {
 		const handleKeyDown = (event) => {
-			if (event.key === "Escape" && toasts.length > 0) {
-				const lastToast = toasts[toasts.length - 1];
-				if (lastToast) {
-					hideToast(lastToast.id);
-				}
+			if (event.key !== "Escape") return;
+			const lastLiveToast = [...toastsRef.current].reverse().find((t) => !t.isExiting);
+			if (lastLiveToast) {
+				hideToast(lastLiveToast.id);
 			}
 		};
 
 		document.addEventListener("keydown", handleKeyDown);
 		return () => document.removeEventListener("keydown", handleKeyDown);
-	}, [hideToast, toasts]);
+	}, [hideToast]);
 
 	useEffect(() => {
 		return () => {

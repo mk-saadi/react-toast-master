@@ -16,10 +16,9 @@ import "./components/styles/skew.css";
 export const ToastContext = createContext(null);
 
 export const ToastProvider = ({ children }) => {
-	const {
-		toasts,
-		setToasts,
-		toastMaster,
+		const {
+			toasts,
+			toastMaster,
 		hideToast,
 		handleConfirm,
 		handleCancel,
@@ -37,11 +36,10 @@ export const ToastProvider = ({ children }) => {
 			{children}
 
 			{toasts.map((toast) => (
-				<ToastItem
-					key={toast.id}
-					toast={toast}
-					setToasts={setToasts}
-					onHide={hideToast}
+					<ToastItem
+						key={toast.id}
+						toast={toast}
+						onHide={hideToast}
 					onConfirm={handleConfirm}
 					onCancel={handleCancel}
 					onMouseEnter={handleMouseEnter}

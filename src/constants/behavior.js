@@ -39,7 +39,9 @@ export const TOAST_BEHAVIOR = {
 	durations: {
 		standard: 4500,
 		afterHover: 1500,
-		animationClose: 300,
+		// Must match exit animation durations in components/styles/animation.css
+		animationClose: 350, // all standard exit animations (0.35s)
+		animationCloseFull: 500, // ani_fade_out_full (0.5s)
 		loadingFooterDelay: 5330,
 		loadingCloseButtonDelay: 5000,
 		transitionDelay: 50,

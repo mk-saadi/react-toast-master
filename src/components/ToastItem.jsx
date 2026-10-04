@@ -5,10 +5,8 @@ import Footer from "./footer/Footer";
 import InnerFooter from "./footer/InnerFooter";
 import LoadFooter from "./footer/LoadFooter";
 
-export const ToastItem = ({ toast, onHide, onConfirm, onCancel, onMouseEnter, onMouseLeave, setToasts }) => {
-	const positionKey = Object.keys(TOAST_STYLES.positionClasses).find(
-		(key) => TOAST_STYLES.positionClasses[key] === toast.position,
-	);
+export const ToastItem = ({ toast, onHide, onConfirm, onCancel, onMouseEnter, onMouseLeave }) => {
+	const positionKey = toast.positionKey;
 
 	const backgroundKey = Object.keys(TOAST_STYLES.backgroundClasses).find(
 		(key) => TOAST_STYLES.backgroundClasses[key] === toast.background,
@@ -44,11 +42,6 @@ export const ToastItem = ({ toast, onHide, onConfirm, onCancel, onMouseEnter, on
 					${toast.isExiting ? "exiting" : ""}
 					`}
 				style={{ zIndex: 9999 }}
-				onAnimationEnd={() => {
-					if (toast.isExiting) {
-						setToasts((prev) => prev.filter((t) => t.id !== toast.id));
-					}
-				}}
 			>
 				{isCustomType ? (
 					<div
